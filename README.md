@@ -21,7 +21,6 @@ Built with modern technologies for speed, aesthetics, and accessibility.
 - **Framework:** [Vite](https://vitejs.dev/)  
 - **Languages:** HTML5, CSS3, TypeScript  
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)  
-- **UI/UX Design:** [Dualite](https://dualite.app/) (no-code export)  
 - **Hosting:** [Netlify](https://www.netlify.com/)  
 - **Domain:** [adityajagdhane.in](https://www.adityajagdhane.in)
 
