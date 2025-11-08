@@ -14,12 +14,11 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-black py-8 text-center text-gray-500 relative">
       <div className="container mx-auto px-6">
-        <p>Crafted by © {year} – Aditya Jagdhane | AYT!DA, All rights reserved.</p>
-        <div className="flex justify-center space-x-4 mt-4">
-            <a href="https://www.adityajagdhane.in" className="hover:text-white transition-colors">Website</a>
-            <a href="https://www.aytida.co.in" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">AYT!DA</a>
-        </div>
+        <p>
+          Crafted by © {year} – Aditya Jagdhane | AYT!DA, All rights reserved.
+        </p>
       </div>
+
       {scrolled && (
         <button
           onClick={scrollToTop}
