@@ -8,28 +8,18 @@ import Footer from './components/Footer';
 
 function App() {
   useEffect(() => {
-    // skip custom scroll if Chrome's text fragment (#:~:text=...) is present
-    const hasTextFragment = window.location.hash.startsWith('#:~:text=');
-    if (hasTextFragment) return;
+    // skip if Chrome text-fragment (#:~:text=...) is present
+    if (window.location.hash.startsWith('#:~:text=')) return;
 
-    // handle paths like /about or /contact
-    const path = window.location.pathname.replace('/', '');
-    if (path) {
-      const el = document.getElementById(path.toLowerCase());
+    const path = window.location.pathname.replace('/', '').toLowerCase();
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    const targetId = hash || path;
+
+    if (targetId) {
+      const el = document.getElementById(targetId);
       if (el) {
         setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-      }
-    }
-
-    // handle hash like #about
-    const hash = window.location.hash.replace('#', '');
-    if (hash && !hasTextFragment) {
-      const el = document.getElementById(hash.toLowerCase());
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 300);
       }
     }
