@@ -3,13 +3,16 @@ import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
   return (
-    <section id="home" className="section relative overflow-hidden">
+    <section
+      id="home"
+      className="section relative overflow-hidden flex flex-col items-center justify-center text-center min-h-screen px-4 md:block"
+    >
       <div className="container mx-auto px-6 grid md:grid-cols-2 items-center gap-10">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center md:text-left"
+          className="text-center md:text-left flex flex-col items-center md:items-start"
         >
           <motion.p
             initial={{ opacity: 0 }}
@@ -36,19 +39,25 @@ const Home: React.FC = () => {
             Musician · Designer · Programmer
           </motion.p>
         </motion.div>
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="relative flex justify-center items-center"
+          className="relative flex justify-center items-center mt-10 md:mt-0"
         >
           <div className="relative group">
             <img
               src="https://i.postimg.cc/7Z5QNzvX/Picsart-25-11-02-21-10-58-878.png"
               alt="Aditya Jagdhane"
-              className="max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative"
+              className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative"
             />
-            <div className="absolute inset-0 bg-black" style={{ maskImage: 'linear-gradient(to top, black 0%, transparent 50%)' }}></div>
+            <div
+              className="absolute inset-0 bg-black"
+              style={{
+                maskImage: 'linear-gradient(to top, black 0%, transparent 50%)',
+              }}
+            ></div>
             <div className="absolute -inset-2 bg-white/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         </motion.div>
