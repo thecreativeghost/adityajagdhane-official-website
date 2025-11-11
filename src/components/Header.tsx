@@ -21,7 +21,6 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {/* Header Bar */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -32,13 +31,9 @@ const Header: React.FC = () => {
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <a href="/" className="cursor-pointer z-50">
-            <img
-              src="https://i.postimg.cc/yd0j68Tg/logo-for-web.png"
-              alt="AYT!DA Logo"
-              className="h-8 w-auto"
-            />
+            <img src="https://i.postimg.cc/yd0j68Tg/logo-for-web.png" alt="AYT!DA Logo" className="h-8 w-auto" />
           </a>
-
+          
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
@@ -78,7 +73,7 @@ const Header: React.FC = () => {
             className="md:hidden z-50"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
           >
             <MenuToggle toggle={toggleMenu} isOpen={isMenuOpen} />
           </motion.div>
@@ -92,10 +87,9 @@ const Header: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-md z-40 flex flex-col items-center justify-center text-center md:hidden"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 bg-black/90 backdrop-blur-md z-40 flex flex-col items-center justify-center md:hidden"
           >
-            {/* Centered mobile nav */}
             <nav className="flex flex-col items-center justify-center space-y-8 text-center">
               {navLinks.map((link) => {
                 if (link.type === 'scroll') {
