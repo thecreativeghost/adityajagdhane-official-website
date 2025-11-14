@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaSpotify, FaYoutube, FaInstagram, FaLinkedin, FaApple, FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe } from 'react-icons/fa';
 import { SiWikidata } from 'react-icons/si';
 import { BsMusicNote } from 'react-icons/bs';
+import { BsDisc } from 'react-icons/bs';
 
 const socialLinks = [
   { icon: FaSpotify, label: 'Spotify', href: 'https://open.spotify.com/artist/4h9hF2bDVS8HY1weu9IYg5' },
