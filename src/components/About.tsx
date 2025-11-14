@@ -16,9 +16,9 @@ const socialLinks = [
   { icon: FaGlobe, label: 'AYT!DA', href: 'https://www.aytida.co.in' },
   { icon: FaLink, label: 'Linktree', href: 'https://lnk.bio/adityajagdhane7' },
   { icon: FaMusic, label: 'MusicBrainz', href: 'https://musicbrainz.org/artist/2b41c60a-13c6-482d-945c-f704fb893e32' },
-  { icon: GaGlobe, label: 'Knowledge Panel', href: 'https://www.google.com/search?kgmid=/g/11t5m84d_v' },
-,
+  { icon: FaGlobe, label: 'Knowledge Panel', href: 'https://www.google.com/search?kgmid=/g/11t5m84d_v' },
 ];
+
 
 const About: React.FC = () => {
   return (
