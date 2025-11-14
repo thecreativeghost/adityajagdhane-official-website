@@ -11,7 +11,7 @@ const socialLinks = [
   { icon: FaLinkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/aditya-jagdhane' },
   { icon: FaApple, label: 'Apple Music', href: 'https://music.apple.com/ca/artist/aditya-jagdhane/1631817096' },
   { icon: BsMusicNote, label: 'JioSaavn', href: 'https://www.jiosaavn.com/artist/aditya-jagdhane-songs/4Q,9LuO5,fs_' },
-  { icon: FaImdb, label: 'IMDb', href: 'https://www.imdb.com/name/nm16380921' },
+  { icon: FaImdb, label: 'IMDb', href: 'https://www.imdb.com/name/nm16380921/' },
   { icon: FaTwitter, label: 'X (Twitter)', href: 'https://x.com/AdityaJagdhane7' },
   { icon: FaGlobe, label: 'AYT!DA', href: 'https://www.aytida.co.in' },
   { icon: FaLink, label: 'Linktree', href: 'https://lnk.bio/adityajagdhane7' },
