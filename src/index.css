@@ -6,11 +6,14 @@ body {
   @apply bg-black text-gray-300 font-sora antialiased;
 }
 
-/* FIXED SECTION — Works for ALL pages without breaking layout */
 .section {
   @apply min-h-screen flex flex-col items-center justify-center p-8;
 }
 
+/* Only About section fix */
+.about-section {
+  @apply justify-start pt-32;
+}
 
 /* For Webkit browsers */
 ::-webkit-scrollbar {
