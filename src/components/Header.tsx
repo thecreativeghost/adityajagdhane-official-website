@@ -21,7 +21,6 @@ const Header: React.FC = () => {
 
   return (
     <>
-      {/* TOP HEADER */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -45,7 +44,6 @@ const Header: React.FC = () => {
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
 
-              // SCROLL LINKS WITH OFFSET FIX
               if (link.type === 'scroll') {
                 return (
                   <Link
@@ -53,7 +51,7 @@ const Header: React.FC = () => {
                     to={link.to}
                     smooth={true}
                     duration={500}
-                    offset={-120}    // MAIN FIX: prevents jump on About & Contact
+                    offset={-80}   // <— FINAL CORRECT OFFSET
                     spy={true}
                     activeClass="text-white"
                     className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer relative group"
@@ -64,7 +62,6 @@ const Header: React.FC = () => {
                 );
               }
 
-              // EXTERNAL LINKS
               return (
                 <a
                   key={link.name}
@@ -112,7 +109,7 @@ const Header: React.FC = () => {
                       to={link.to}
                       smooth={true}
                       duration={500}
-                      offset={-120}     // FIX for mobile too
+                      offset={-80}    // <— MOBILE OFFSET ALSO FIXED
                       onClick={closeMenu}
                       className="text-3xl text-gray-300 hover:text-white transition-colors cursor-pointer"
                     >
