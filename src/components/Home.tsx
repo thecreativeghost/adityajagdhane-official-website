@@ -5,7 +5,7 @@ const Home: React.FC = () => {
   return (
     <section
       id="home"
-      className="section relative overflow-hidden flex flex-col items-center justify-center text-center min-h-screen px-4 md:block"
+      className="section relative overflow-hidden flex flex-col items-center justify-center text-center px-4 md:block"
     >
       <div className="container mx-auto px-6 grid md:grid-cols-2 items-center gap-10">
         <motion.div
@@ -22,6 +22,7 @@ const Home: React.FC = () => {
           >
             This is
           </motion.p>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,6 +31,7 @@ const Home: React.FC = () => {
           >
             Aditya Jagdhane
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -52,12 +54,14 @@ const Home: React.FC = () => {
               alt="Aditya Jagdhane"
               className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative"
             />
+
             <div
               className="absolute inset-0 bg-black"
               style={{
                 maskImage: 'linear-gradient(to top, black 0%, transparent 50%)',
               }}
             ></div>
+
             <div className="absolute -inset-2 bg-white/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         </motion.div>
