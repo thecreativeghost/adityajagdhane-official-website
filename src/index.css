@@ -10,11 +10,6 @@ body {
   @apply min-h-screen flex flex-col items-center justify-center p-8;
 }
 
-/* Only About section fix */
-.about-section {
-  @apply justify-start pt-32;
-}
-
 /* For Webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;
