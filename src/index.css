@@ -6,8 +6,12 @@ body {
   @apply bg-black text-gray-300 font-sora antialiased;
 }
 
+/* FINAL FIX — no grey space + all pages open correct */
 .section {
-  @apply min-h-screen flex flex-col items-center justify-center p-8;
+  @apply w-full min-h-screen flex flex-col items-center p-8;
+  /* Removed: justify-center (this caused the gap)
+     Kept: min-h-screen (this keeps each page full height)
+  */
 }
 
 /* For Webkit browsers */
