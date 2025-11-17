@@ -21,22 +21,31 @@ const Header: React.FC = () => {
 
   return (
     <>
+      {/* TOP HEADER */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || isMenuOpen ? 'bg-black/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+          scrolled || isMenuOpen ? 'bg-black/80 shadow-lg' : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+
+          {/* LOGO */}
           <a href="/" className="cursor-pointer z-50">
-            <img src="https://i.postimg.cc/yd0j68Tg/logo-for-web.png" alt="AYT!DA Logo" className="h-8 w-auto" />
+            <img
+              src="https://i.postimg.cc/yd0j68Tg/logo-for-web.png"
+              alt="AYT!DA Logo"
+              className="h-8 w-auto"
+            />
           </a>
-          
-          {/* Desktop Navigation */}
+
+          {/* DESKTOP NAVIGATION */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
+
+              // SCROLL LINKS WITH OFFSET FIX
               if (link.type === 'scroll') {
                 return (
                   <Link
@@ -44,6 +53,7 @@ const Header: React.FC = () => {
                     to={link.to}
                     smooth={true}
                     duration={500}
+                    offset={-120}    // MAIN FIX: prevents jump on About & Contact
                     spy={true}
                     activeClass="text-white"
                     className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer relative group"
@@ -53,12 +63,14 @@ const Header: React.FC = () => {
                   </Link>
                 );
               }
+
+              // EXTERNAL LINKS
               return (
                 <a
                   key={link.name}
                   href={link.to}
-                  target={link.type === 'external' ? '_blank' : undefined}
-                  rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer relative group"
                 >
                   {link.name}
@@ -68,7 +80,7 @@ const Header: React.FC = () => {
             })}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE MENU BUTTON */}
           <motion.div
             className="md:hidden z-50"
             initial={{ opacity: 0, scale: 0.5 }}
@@ -80,7 +92,7 @@ const Header: React.FC = () => {
         </div>
       </motion.header>
 
-      {/* Mobile Menu Overlay */}
+      {/* MOBILE MENU OVERLAY */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -88,10 +100,11 @@ const Header: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-md z-40 flex flex-col items-center justify-center md:hidden"
+            className="fixed inset-0 bg-black/90 z-40 flex flex-col items-center justify-center md:hidden"
           >
             <nav className="flex flex-col items-center justify-center space-y-8 text-center">
               {navLinks.map((link) => {
+
                 if (link.type === 'scroll') {
                   return (
                     <Link
@@ -99,6 +112,7 @@ const Header: React.FC = () => {
                       to={link.to}
                       smooth={true}
                       duration={500}
+                      offset={-120}     // FIX for mobile too
                       onClick={closeMenu}
                       className="text-3xl text-gray-300 hover:text-white transition-colors cursor-pointer"
                     >
@@ -106,12 +120,13 @@ const Header: React.FC = () => {
                     </Link>
                   );
                 }
+
                 return (
                   <a
                     key={link.name}
                     href={link.to}
-                    target={link.type === 'external' ? '_blank' : undefined}
-                    rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={closeMenu}
                     className="text-3xl text-gray-300 hover:text-white transition-colors"
                   >
