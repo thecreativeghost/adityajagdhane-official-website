@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaSpotify, FaYoutube, FaInstagram, FaLinkedin, FaApple, FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe } from 'react-icons/fa';
+import { SiWikidata } from 'react-icons/si';
 import { BsMusicNote, BsDisc } from 'react-icons/bs';
 
 const socialLinks = [
@@ -26,9 +27,7 @@ const fadeOnly = {
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="section pt-32">
-      {/* pt-32 ensures header never overlaps */}
-
+    <section id="about" className="section">
       <div className="container mx-auto px-6 text-center">
 
         {/* Heading */}
@@ -139,5 +138,4 @@ const About: React.FC = () => {
     </section>
   );
 };
-
 export default About;
