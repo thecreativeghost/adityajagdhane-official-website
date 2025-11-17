@@ -6,11 +6,17 @@ body {
   @apply bg-black text-gray-300 font-sora antialiased;
 }
 
+/* FIXED SECTION CLASS — NO GREY SPACE */
 .section {
-  @apply min-h-screen flex flex-col items-center justify-center p-8;
+  @apply w-full flex flex-col items-center p-8;
+  /* removed:
+     min-h-screen
+     justify-center
+     both were creating the top blank area
+  */
 }
 
-/* For Webkit browsers */
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
