@@ -48,11 +48,9 @@ function waitForElementAndScroll(id: string, maxAttempts = 30, interval = 120) {
         console.log(`[scroll] found '${id}' after ${attempts} attempt(s)`);
         const container = findScrollContainer(el);
         if (container && container !== document.documentElement && container !== document.body) {
-          // scroll inside container
           const top = (el as HTMLElement).offsetTop;
           (container as HTMLElement).scrollTo({ top, behavior: 'smooth' });
         } else {
-          // scroll window
           (el as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
         return resolve();
@@ -73,7 +71,6 @@ export default function App() {
       const target = normalizeTargetFromLocation();
       console.log('[App] initial target =', target || '(home)');
       if (!target) {
-        // small delay so layout settles
         setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 200);
         return;
       }
@@ -99,6 +96,7 @@ export default function App() {
       <main>
         <Home />
         <Music />
+        <Design />   {/* 👈 Added here */}
         <About />
         <Contact />
       </main>
