@@ -7,7 +7,7 @@ import { MenuToggle } from './MenuToggle';
 const navLinks = [
   { name: 'Home', to: 'home', type: 'scroll' },
   { name: 'Music', to: 'music', type: 'scroll' },
-  { name: 'Design', to: 'https://www.behance.net/adityajagdhane_7', type: 'external' },
+  { name: 'Design', to: 'design', type: 'scroll' },
   { name: 'About', to: 'about', type: 'scroll' },
   { name: 'Contact', to: 'contact', type: 'scroll' },
 ];
