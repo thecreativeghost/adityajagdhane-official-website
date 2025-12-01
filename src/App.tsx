@@ -6,23 +6,38 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+function scrollToId(targetId?: string) {
+  if (!targetId) return;
+  const el = document.getElementById(targetId);
+  if (el) {
+    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+  }
+}
+
+function getTargetFromLocation() {
+  // skip if Chrome text-fragment (#:~:text=...) is present
+  if (window.location.hash.startsWith('#:~:text=')) return '';
+  const path = window.location.pathname.replace('/', '').toLowerCase();
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+  return hash || path; // e.g. 'about' or '' for home
+}
+
 function App() {
   useEffect(() => {
-    // skip if Chrome text-fragment (#:~:text=...) is present
-    if (window.location.hash.startsWith('#:~:text=')) return;
+    // initial load
+    const initialTarget = getTargetFromLocation();
+    if (initialTarget) scrollToId(initialTarget);
 
-    const path = window.location.pathname.replace('/', '').toLowerCase();
-    const hash = window.location.hash.replace('#', '').toLowerCase();
-    const targetId = hash || path;
+    // handle back/forward navigation
+    const onPop = () => {
+      const t = getTargetFromLocation();
+      // if no target, scroll to top
+      if (!t) window.scrollTo({ top: 0, behavior: 'smooth' });
+      else scrollToId(t);
+    };
 
-    if (targetId) {
-      const el = document.getElementById(targetId);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-      }
-    }
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
   }, []);
 
   return (
