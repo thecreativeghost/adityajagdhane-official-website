@@ -19,6 +19,20 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // update browser URL without reloading (keeps SPA behavior)
+  const updateUrlForTarget = (target: string) => {
+    try {
+      // translate 'home' -> '/'
+      const path = !target || target === 'home' ? '/' : `/${encodeURIComponent(target)}`;
+      if (window.location.pathname !== path) {
+        window.history.pushState({}, '', path);
+      }
+    } catch (err) {
+      // ignore pushState errors (rare)
+      console.warn('pushState failed', err);
+    }
+  };
+
   return (
     <>
       <motion.header
@@ -30,9 +44,16 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-
           {/* LOGO */}
-          <a href="/" className="cursor-pointer z-50">
+          <a
+            href="/"
+            className="cursor-pointer z-50"
+            onClick={(e) => {
+              // keep default behavior for open-in-new-tab; for normal click, update url and scroll top
+              // don't prevent default so fallback works; do URL update and let SPA scroll handler handle top
+              updateUrlForTarget('home');
+            }}
+          >
             <img
               src="https://i.postimg.cc/yd0j68Tg/logo-for-web.png"
               alt="AYT!DA Logo"
@@ -43,7 +64,6 @@ const Header: React.FC = () => {
           {/* DESKTOP NAVIGATION */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
-
               if (link.type === 'scroll') {
                 return (
                   <Link
@@ -51,10 +71,12 @@ const Header: React.FC = () => {
                     to={link.to}
                     smooth={true}
                     duration={500}
-                    offset={-80}   // <— FINAL CORRECT OFFSET
+                    offset={-80} // FINAL CORRECT OFFSET
                     spy={true}
                     activeClass="text-white"
                     className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer relative group"
+                    // when clicked, update URL to /about, /music etc (but keep scroll behavior)
+                    onClick={() => updateUrlForTarget(link.to)}
                   >
                     {link.name}
                     <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
@@ -82,7 +104,7 @@ const Header: React.FC = () => {
             className="md:hidden z-50"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
             <MenuToggle toggle={toggleMenu} isOpen={isMenuOpen} />
           </motion.div>
@@ -96,12 +118,11 @@ const Header: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="fixed inset-0 bg-black/90 z-40 flex flex-col items-center justify-center md:hidden"
           >
             <nav className="flex flex-col items-center justify-center space-y-8 text-center">
               {navLinks.map((link) => {
-
                 if (link.type === 'scroll') {
                   return (
                     <Link
@@ -109,8 +130,12 @@ const Header: React.FC = () => {
                       to={link.to}
                       smooth={true}
                       duration={500}
-                      offset={-80}    // <— MOBILE OFFSET ALSO FIXED
-                      onClick={closeMenu}
+                      offset={-80} // MOBILE OFFSET ALSO FIXED
+                      onClick={() => {
+                        // close menu + update url
+                        closeMenu();
+                        updateUrlForTarget(link.to);
+                      }}
                       className="text-3xl text-gray-300 hover:text-white transition-colors cursor-pointer"
                     >
                       {link.name}
