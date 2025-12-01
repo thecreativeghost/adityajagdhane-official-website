@@ -1,2 +1,9 @@
-/*    /index.html   200
-https://adityajagdhane.in/*    https://www.adityajagdhane.in/:splat   301!
+# serve sitemap & robots as static files (must come before the SPA fallback)
+ /sitemap.xml    /sitemap.xml    200
+ /robots.txt     /robots.txt     200
+
+# preserve your domain canonical redirect (keep it if you need forced www)
+ https://adityajagdhane.in/*    https://www.adityajagdhane.in/:splat   301!
+
+# SPA fallback for all other routes
+ /*    /index.html   200
