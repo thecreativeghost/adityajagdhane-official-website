@@ -23,7 +23,7 @@ const Design: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-gray-300 leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-gray-300 leading-relaxed mb-4"
         >
           Design isn’t work for me… it’s a whole feeling. <br />
           Some people create things, but we designers give them that <em>extra sparkle</em>. <br />
@@ -37,7 +37,7 @@ const Design: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="w-full max-w-xs mx-auto"
+          className="w-full max-w-sm mx-auto"
         >
           <a
             href="https://www.behance.net/adityajagdhane_7"
