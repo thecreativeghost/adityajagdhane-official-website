@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaSpotify, FaYoutube, FaInstagram, FaLinkedin, FaApple, FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe } from 'react-icons/fa';
 import { SiWikidata } from 'react-icons/si';
 import { BsMusicNote, BsDisc } from 'react-icons/bs';
+import { Helmet } from 'react-helmet-async';
 
 const socialLinks = [
   { icon: FaSpotify, label: 'Spotify', href: 'https://open.spotify.com/artist/4h9hF2bDVS8HY1weu9IYg5' },
@@ -26,116 +27,149 @@ const fadeOnly = {
 };
 
 const About: React.FC = () => {
+  const pageUrl = 'https://www.adityajagdhane.in/about/';
+  const pageTitle = 'About — Aditya Jagdhane';
+  const pageDescription = 'About Aditya Jagdhane — biography, career, creative pursuits, and links to music and profiles.';
+
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://www.adityajagdhane.in/#person",
+    "name": "Aditya Jagdhane",
+    "url": "https://www.adityajagdhane.in",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": pageUrl
+    },
+    "image": "https://www.adityajagdhane.in/aditya_jagdhane_in_2025_professional.jpg",
+    "sameAs": socialLinks.map(l => l.href).filter(Boolean),
+    "jobTitle": ["Musician", "Singer-Songwriter", "Composer", "Graphic Designer", "Programmer"],
+    "description": "Aditya Jagdhane is an Indian musician, singer-songwriter, composer, graphic designer, programmer, and philosopher with an interest in psychology."
+  };
+
   return (
-    <section id="about" className="section">
-      <div className="container mx-auto px-6 text-center">
+    <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="profile" />
+        <script type="application/ld+json">{JSON.stringify(personJsonLd)}</script>
+      </Helmet>
 
-        {/* Heading */}
-        <motion.h2
-          {...fadeOnly}
-          transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold mb-8"
-        >
-          About Aditya
-        </motion.h2>
+      <section id="about" className="section">
+        <div className="container mx-auto px-6 text-center">
 
-        {/* Description */}
-        <motion.p
-          {...fadeOnly}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl mx-auto text-gray-300 leading-relaxed"
-        >
-          Aditya Jagdhane is an Indian musician, singer-songwriter, and composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression. His multidisciplinary approach allows him to express his artistic and philosophical vision across diverse platforms.
-          <br />
-          <span className="text-gray-400 text-sm mt-2 block">
-            Source:{' '}
-            <a
-              href="https://imdb.com/name/nm16380921/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-white transition-colors"
-            >
-              IMDb
-            </a>
-          </span>
-        </motion.p>
+          {/* Heading */}
+          <motion.h2
+            {...fadeOnly}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-bold mb-8"
+          >
+            About Aditya
+          </motion.h2>
 
-        {/* Subheading */}
-        <motion.h3
-          {...fadeOnly}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-3xl font-bold mt-20 mb-8"
-        >
-          Connect With Me
-        </motion.h3>
-
-        {/* Icons Grid */}
-        <motion.div
-          {...fadeOnly}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-4xl mx-auto mb-20"
-        >
-          {socialLinks.map((link, index) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.7 + index * 0.05 }}
-              className="group relative flex items-center justify-center p-4 border border-gray-700 rounded-lg hover:bg-white hover:text-black transition-all duration-300"
-            >
-              <link.icon className="text-3xl" />
-              <span className="absolute bottom-full mb-2 w-auto p-2 text-xs text-white bg-black rounded-md scale-0 group-hover:scale-100 transition-transform origin-bottom">
-                {link.label}
-              </span>
-            </motion.a>
-          ))}
-        </motion.div>
-
-        {/* Organizations */}
-        <motion.div
-          {...fadeOnly}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="text-center"
-        >
-          <h3 className="text-3xl font-bold mb-8">Organizations</h3>
-          <div className="space-y-6">
-            <div>
+          {/* Description */}
+          <motion.p
+            {...fadeOnly}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-3xl mx-auto text-gray-300 leading-relaxed"
+          >
+            Aditya Jagdhane is an Indian musician, singer-songwriter, and composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression. His multidisciplinary approach allows him to express his artistic and philosophical vision across diverse platforms.
+            <br />
+            <span className="text-gray-400 text-sm mt-2 block">
+              Source:{' '}
               <a
-                href="https://indiepulserecords.co.in"
+                href="https://imdb.com/name/nm16380921/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-xl hover:text-white transition-colors"
+                className="underline hover:text-white transition-colors"
               >
-                IndiePulse Records
+                IMDb
               </a>
-              <p className="text-gray-400">
-                <em>(Music studio & indie record label)</em>
-              </p>
-            </div>
-            <div>
-              <a
-                href="https://aytida.co.in"
+            </span>
+          </motion.p>
+
+          {/* Subheading */}
+          <motion.h3
+            {...fadeOnly}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="text-3xl font-bold mt-20 mb-8"
+          >
+            Connect With Me
+          </motion.h3>
+
+          {/* Icons Grid */}
+          <motion.div
+            {...fadeOnly}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-4xl mx-auto mb-20"
+          >
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-xl hover:text-white transition-colors"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.7 + index * 0.05 }}
+                className="group relative flex items-center justify-center p-4 border border-gray-700 rounded-lg hover:bg-white hover:text-black transition-all duration-300"
               >
-                AYT!DA
-              </a>
-              <p className="text-gray-400">
-                <em>(Visual designing agency)</em>
-              </p>
+                <link.icon className="text-3xl" />
+                <span className="absolute bottom-full mb-2 w-auto p-2 text-xs text-white bg-black rounded-md scale-0 group-hover:scale-100 transition-transform origin-bottom">
+                  {link.label}
+                </span>
+              </motion.a>
+            ))}
+          </motion.div>
+
+          {/* Organizations */}
+          <motion.div
+            {...fadeOnly}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="text-center"
+          >
+            <h3 className="text-3xl font-bold mb-8">Organizations</h3>
+            <div className="space-y-6">
+              <div>
+                <a
+                  href="https://indiepulserecords.co.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-xl hover:text-white transition-colors"
+                >
+                  IndiePulse Records
+                </a>
+                <p className="text-gray-400">
+                  <em>(Music studio & indie record label)</em>
+                </p>
+              </div>
+              <div>
+                <a
+                  href="https://aytida.co.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-xl hover:text-white transition-colors"
+                >
+                  AYT!DA
+                </a>
+                <p className="text-gray-400">
+                  <em>(Visual designing agency)</em>
+                </p>
+              </div>
             </div>
-          </div>
-          <p className="text-sm text-gray-500 mt-8">
-            <em>Founded by Aditya Jagdhane</em>
-          </p>
-        </motion.div>
-      </div>
-    </section>
+            <p className="text-sm text-gray-500 mt-8">
+              <em>Founded by Aditya Jagdhane</em>
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 };
 
