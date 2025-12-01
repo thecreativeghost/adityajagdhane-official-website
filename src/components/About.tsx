@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from "react-helmet-async";
 import { motion } from 'framer-motion';
 import { FaSpotify, FaYoutube, FaInstagram, FaLinkedin, FaApple, FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe } from 'react-icons/fa';
 import { SiWikidata } from 'react-icons/si';
@@ -29,37 +28,6 @@ const fadeOnly = {
 const About: React.FC = () => {
   return (
     <section id="about" className="section">
-
-      {/* 🌟 META TAGS FOR ABOUT PAGE */}
-      <Helmet>
-        <title>About Aditya Jagdhane – Musician, Designer & Programmer</title>
-
-        <meta
-          name="description"
-          content="Learn about Aditya Jagdhane — an Indian musician, singer-songwriter, composer, designer, programmer, and philosopher known for blending heartfelt music with creativity and psychology."
-        />
-
-        <meta property="og:title" content="About Aditya Jagdhane" />
-        <meta
-          property="og:description"
-          content="Official About page of Aditya Jagdhane — Indian musician, composer, designer, and programmer exploring creativity, emotions, and human behavior."
-        />
-        <meta property="og:url" content="https://www.adityajagdhane.in/about" />
-        <meta property="og:type" content="profile" />
-        <meta property="og:image" content="https://i.postimg.cc/yd0j68Tg/logo-for-web.png" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Aditya Jagdhane" />
-        <meta
-          name="twitter:description"
-          content="Explore the journey of Aditya Jagdhane — musician, composer, designer & programmer."
-        />
-        <meta name="twitter:image" content="https://i.postimg.cc/yd0j68Tg/logo-for-web.png" />
-
-        <link rel="canonical" href="https://www.adityajagdhane.in/about" />
-      </Helmet>
-
-      {/* MAIN CONTENT */}
       <div className="container mx-auto px-6 text-center">
 
         {/* Heading */}
@@ -77,11 +45,7 @@ const About: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-3xl mx-auto text-gray-300 leading-relaxed"
         >
-          Aditya Jagdhane is an Indian musician, singer-songwriter, and composer.
-          His unique style blends heartfelt lyrics with soulful melodies.
-          Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology.
-          He often reflects human behavior, emotions, and introspective thoughts through his artistic expression.
-          His multidisciplinary approach allows him to express his artistic and philosophical vision across diverse platforms.
+          Aditya Jagdhane is an Indian musician, singer-songwriter, and composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression. His multidisciplinary approach allows him to express his artistic and philosophical vision across diverse platforms.
           <br />
           <span className="text-gray-400 text-sm mt-2 block">
             Source:{' '}
