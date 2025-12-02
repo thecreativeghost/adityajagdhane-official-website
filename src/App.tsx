@@ -70,7 +70,7 @@ const sectionTitles: Record<string, string> = {
   home: 'Aditya Jagdhane | Indian musician, singer-songwriter, composer and philosopher',
   music: 'Music | Discography | Aditya Jagdhane',
   design: 'Design | Artwork | Aditya Jagdhane',
-  about: 'About — Aditya Jagdhane',
+  about: 'About | Biography | Aditya Jagdhane',
   contact: 'Contact | Get in Touch | Aditya Jagdhane',
 };
 
