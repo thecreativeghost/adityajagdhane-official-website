@@ -67,11 +67,11 @@ function waitForElementAndScroll(id: string, maxAttempts = 30, interval = 120) {
 /** new: mapping for titles */
 const sectionTitles: Record<string, string> = {
   '': 'Aditya Jagdhane',
-  home: 'Home — Aditya Jagdhane',
-  music: 'Music — Aditya Jagdhane',
-  design: 'Design — Aditya Jagdhane',
+  home: 'Aditya Jagdhane | Indian musician, singer-songwriter, composer and philosopher',
+  music: 'Music | Discography | Aditya Jagdhane',
+  design: 'Design | Artwork | Aditya Jagdhane',
   about: 'About — Aditya Jagdhane',
-  contact: 'Contact — Aditya Jagdhane',
+  contact: 'Contact | Get in Touch | Aditya Jagdhane',
 };
 
 export default function App() {
