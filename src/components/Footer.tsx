@@ -15,7 +15,13 @@ const Footer: React.FC = () => {
     <footer className="bg-black py-8 text-center text-gray-500 relative">
       <div className="container mx-auto px-6">
         <p>
-          Crafted by © {year} – Aditya Jagdhane | AYT!DA, All rights reserved.
+          Crafted by © {year} – <a
+  href="https://www.google.com/search?kgmid=/g/11t5m84d_v"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Aditya Jagdhane
+</a> | AYT!DA, All rights reserved.
         </p>
       </div>
 
