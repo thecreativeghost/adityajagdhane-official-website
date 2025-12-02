@@ -1,9 +1,0 @@
-# serve sitemap & robots as static files (must come before the SPA fallback)
- /sitemap.xml    /sitemap.xml    200
- /robots.txt     /robots.txt     200
-
-# preserve your domain canonical redirect
- https://adityajagdhane.in/*    https://www.adityajagdhane.in/:splat   301!
-
-# SPA fallback for all other routes
- /*    /index.html   200
