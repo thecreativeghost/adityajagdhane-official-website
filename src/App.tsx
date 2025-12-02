@@ -7,7 +7,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-/** Find the nearest scrollable ancestor for an element, or fallback to document.scrollingElement */
+/** existing helpers (no change) */
 function findScrollContainer(el: HTMLElement | null): HTMLElement | Element | null {
   if (!el) return document.scrollingElement || document.documentElement;
   let node: any = el;
@@ -33,7 +33,6 @@ function normalizeTargetFromLocation(): string {
   }
 }
 
-/** Wait for element, then scroll the appropriate container to that element */
 function waitForElementAndScroll(id: string, maxAttempts = 30, interval = 120) {
   return new Promise<void>((resolve) => {
     if (!id) {
@@ -65,11 +64,24 @@ function waitForElementAndScroll(id: string, maxAttempts = 30, interval = 120) {
   });
 }
 
+/** new: mapping for titles */
+const sectionTitles: Record<string, string> = {
+  '': 'Aditya Jagdhane',
+  home: 'Home — Aditya Jagdhane',
+  music: 'Music — Aditya Jagdhane',
+  design: 'Design — Aditya Jagdhane',
+  about: 'About — Aditya Jagdhane',
+  contact: 'Contact — Aditya Jagdhane',
+};
+
 export default function App() {
   useEffect(() => {
     const doInitial = async () => {
       const target = normalizeTargetFromLocation();
       console.log('[App] initial target =', target || '(home)');
+      // set title for initial target
+      document.title = sectionTitles[target] ?? 'Aditya Jagdhane';
+
       if (!target) {
         setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 200);
         return;
@@ -82,21 +94,54 @@ export default function App() {
     const onPop = async () => {
       const t = normalizeTargetFromLocation();
       console.log('[App] popstate ->', t || '(home)');
+      document.title = sectionTitles[t] ?? 'Aditya Jagdhane';
       if (!t) window.scrollTo({ top: 0, behavior: 'smooth' });
       else await waitForElementAndScroll(t);
     };
 
     window.addEventListener('popstate', onPop);
-    return () => window.removeEventListener('popstate', onPop);
+
+    // also update title when user scrolls and different section becomes visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // choose the first entry that's intersecting and with sufficient visibility
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+        if (visible && visible.target && visible.target.id) {
+          const id = visible.target.id.toLowerCase();
+          if (sectionTitles[id]) {
+            document.title = sectionTitles[id];
+          }
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: [0.35, 0.6, 0.9], // tune as needed
+      }
+    );
+
+    // observe sections by ids if they exist
+    ['home', 'music', 'design', 'about', 'contact'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('popstate', onPop);
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <div className="font-sora">
       <Header />
       <main>
+        {/* Ensure each section component renders an element with the matching id */}
         <Home />
         <Music />
-        <Design />   {/* 👈 Added here */}
+        <Design />
         <About />
         <Contact />
       </main>
