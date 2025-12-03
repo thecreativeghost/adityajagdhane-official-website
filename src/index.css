@@ -2,59 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== BASE ===== */
 body {
   @apply bg-black text-gray-300 font-sora antialiased;
 }
 
-/* keep default .section behavior same as before */
+/* GLOBAL SECTION FIX */
 .section {
   @apply w-full min-h-screen flex flex-col items-center p-8;
   padding-top: 120px; /* Header height fix */
-  box-sizing: border-box;
 }
 
-/* keep header space for all sections except home */
-.section#home,
-#home.section {
-  padding-top: 0; /* allow hero to center properly */
-}
-
-/* HERO: minimal, non-invasive rules (no global overrides) */
-.hero {
-  @apply w-full min-h-screen flex flex-col items-center justify-center text-center px-6;
-  padding-top: 0; /* ensure hero not pushed down */
-  box-sizing: border-box;
-  position: relative;
-}
-
-.hero .title {
-  @apply m-0 font-extrabold text-white;
-  font-size: clamp(2rem, 8vw, 4.5rem);
-  line-height: 1.02;
-  max-width: 95%;
-  word-wrap: break-word;
-}
-
-.hero .subtitle {
-  @apply mt-2 text-gray-300;
-  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
-  margin-bottom: 0;
-}
-
-.hero .lead {
-  @apply text-sm text-sky-300 mb-2;
-}
-
-.hero .portrait {
-  @apply mt-8;
-  width: min(40%, 220px);
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-/* SCROLLBAR (same as before) */
+/* SCROLLBAR */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -70,22 +28,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-/* SMALL-SCREEN ONLY ADJUSTMENTS
-   These only activate for narrow devices and won't touch desktop layout.
-*/
-@media (max-width: 640px) {
-  /* ensure hero children centered and not affected by other paddings */
-  .hero {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .hero .portrait {
-    width: min(50%, 180px);
-  }
 }
