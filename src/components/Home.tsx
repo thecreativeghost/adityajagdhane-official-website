@@ -5,14 +5,14 @@ const Home: React.FC = () => {
   return (
     <section
       id="home"
-      className="section relative overflow-hidden flex flex-col items-center justify-center text-center px-4 md:block"
+      className="section relative overflow-hidden text-center px-4" /* <-- stable display, no md:block or flex here */
     >
-      <div className="container mx-auto px-6 grid md:grid-cols-2 items-center gap-10">
+      <div className="container mx-auto px-6 w-full max-w-[1200px] grid items-center md:grid-cols-2 gap-10">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center md:text-left flex flex-col items-center md:items-start"
+          className="flex flex-col items-center md:items-start text-center md:text-left" /* <-- center on small, left on md+ */
         >
           <motion.p
             initial={{ opacity: 0 }}
