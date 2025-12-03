@@ -5,14 +5,16 @@ const Home: React.FC = () => {
   return (
     <section
       id="home"
-      className="section relative overflow-hidden text-center px-4" /* <-- stable display, no md:block or flex here */
+      className="section relative overflow-hidden text-center px-4"
     >
       <div className="container mx-auto px-6 w-full max-w-[1200px] grid items-center md:grid-cols-2 gap-10">
+        
+        {/* LEFT SIDE TEXT */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col items-center md:items-start text-center md:text-left" /* <-- center on small, left on md+ */
+          className="flex flex-col items-center md:items-start text-center md:text-left"
         >
           <motion.p
             initial={{ opacity: 0 }}
@@ -42,6 +44,7 @@ const Home: React.FC = () => {
           </motion.p>
         </motion.div>
 
+        {/* RIGHT SIDE IMAGE */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -49,12 +52,15 @@ const Home: React.FC = () => {
           className="relative flex justify-center items-center mt-10 md:mt-0"
         >
           <div className="relative group">
+            
+            {/* IMAGE with +5px MOBILE SIZE FIX */}
             <img
               src="https://i.postimg.cc/7Z5QNzvX/Picsart-25-11-02-21-10-58-878.png"
               alt="Aditya Jagdhane"
-              className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative"
+              className="max-w-[165px] sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative"
             />
 
+            {/* GRADIENT MASK AT BOTTOM */}
             <div
               className="absolute inset-0 bg-black"
               style={{
@@ -62,9 +68,11 @@ const Home: React.FC = () => {
               }}
             ></div>
 
+            {/* HOVER GLOW EFFECT */}
             <div className="absolute -inset-2 bg-white/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );
