@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
     <loc>https://www.adityajagdhane.in/</loc>
     <lastmod>2025-12-01</lastmod>
-    <priority>1.00</priority>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
 
+  <!-- Core Sections -->
   <url>
-    <loc>https://www.adityajagdhane.in/music</loc>
+    <loc>https://www.adityajagdhane.in/music/</loc>
     <lastmod>2025-12-01</lastmod>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://www.adityajagdhane.in/design</loc>
-    <lastmod>2025-12-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://www.adityajagdhane.in/about</loc>
+    <loc>https://www.adityajagdhane.in/design/</loc>
     <lastmod>2025-12-01</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
+  <!-- Informational Pages -->
   <url>
-    <loc>https://www.adityajagdhane.in/contact</loc>
+    <loc>https://www.adityajagdhane.in/about/</loc>
     <lastmod>2025-12-01</lastmod>
-    <priority>0.80</priority>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
-  
+
+  <url>
+    <loc>https://www.adityajagdhane.in/contact/</loc>
+    <lastmod>2025-12-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
