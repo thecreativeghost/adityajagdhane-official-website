@@ -58,8 +58,8 @@ const Home: React.FC = () => {
         >
           <div className="relative group">
             <img
-              src="https://i.postimg.cc/7Z5QNzvX/Picsart-25-11-02-21-10-58-878.png"
-              alt="Aditya Jagdhane"
+              src="https://www.adityajagdhane.in/images/profile/aditya-jagdhane-casual-outfit.webp"
+              alt="Aditya Jagdhane creative professional portrait featuring abstract brush stroke design"
               className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative"
             />
 
