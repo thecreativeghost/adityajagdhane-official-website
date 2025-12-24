@@ -157,50 +157,62 @@ const About: React.FC = () => {
             })}
           </motion.div>
 
-          {/* Organizations */}
-          <motion.div
-            {...fadeOnly}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="text-center"
-          >
-            <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-              Organizations
-            </h3>
+         {/* Organizations */}
+<motion.div
+  {...fadeOnly}
+  transition={{ duration: 0.5, delay: 0.8 }}
+  className="text-center"
+>
+  <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+    Organizations
+  </h3>
 
-            <div className="space-y-6">
-              <div>
-                <a
-                  href="https://indiepulserecords.co.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
-                >
-                  IndiePulse Records
-                </a>
-                <p className="text-gray-600 dark:text-gray-400">
-                  <em>(Music studio & indie record label)</em>
-                </p>
-              </div>
+  <div className="space-y-6">
+    {/* IndiePulse Records */}
+    <div>
+      <a
+        href="https://indiepulserecords.co.in"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
+      >
+        IndiePulse Records
+      </a>
+      <p className="text-gray-600 dark:text-gray-400">
+        <em>(Music studio & indie record label)</em>
+      </p>
+    </div>
 
-              <div>
-                <a
-                  href="https://aytida.co.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
-                >
-                  AYT!DA
-                </a>
-                <p className="text-gray-600 dark:text-gray-400">
-                  <em>(Visual designing agency)</em>
-                </p>
-              </div>
-            </div>
+    {/* NeuroSphere Publications */}
+    <div>
+      <span className="font-bold text-xl text-gray-900 dark:text-white">
+        NeuroSphere Publications
+      </span>
+      <p className="text-gray-600 dark:text-gray-400">
+        <em>(Book publishing company)</em>
+      </p>
+    </div>
 
-            <p className="text-sm text-gray-500 dark:text-gray-500 mt-8">
-              <em>Founded by Aditya Jagdhane</em>
-            </p>
-          </motion.div>
+    {/* AYT!DA */}
+    <div>
+      <a
+        href="https://aytida.co.in"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
+      >
+        AYT!DA
+      </a>
+      <p className="text-gray-600 dark:text-gray-400">
+        <em>(Visual designing agency)</em>
+      </p>
+    </div>
+  </div>
+
+  <p className="text-sm text-gray-500 dark:text-gray-500 mt-8">
+    <em>Founded by Aditya Jagdhane</em>
+  </p>
+</motion.div>
         </div>
       </section>
     </>
