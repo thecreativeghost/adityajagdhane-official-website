@@ -91,16 +91,25 @@ const About: React.FC = () => {
             Aditya Jagdhane is an Indian musician, singer-songwriter, and composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression.
             <br />
             <span className="text-gray-500 dark:text-gray-400 text-sm mt-2 block">
-              Source:{' '}
-              <a
-                href="https://imdb.com/name/nm16380921/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-black dark:hover:text-white transition-colors"
-              >
-                IMDb
-              </a>
-            </span>
+  Source:{' '}
+  <a
+    href="https://imdb.com/name/nm16380921/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline hover:text-black dark:hover:text-white transition-colors"
+  >
+    IMDb
+  </a>
+  {' '}|{' '}
+  <a
+    href="https://www.themoviedb.org/person/5892274"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline hover:text-black dark:hover:text-white transition-colors"
+  >
+    TMDb
+  </a>
+</span>
           </motion.p>
 
           {/* Connect */}
