@@ -40,31 +40,32 @@ const Design: React.FC = () => {
 
         {/* Behance Button */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="w-full max-w-sm mx-auto"
-        >
-          <a
-            href="https://www.behance.net/adityajagdhane_7"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="View my Behance profile (opens in new tab)"
-            className="inline-block"
-          >
-            <img
-              src="https://www.adityajagdhane.in/behance_button.png"
-              alt="View my Behance gallery"
-              className="
-                w-full h-auto rounded-lg shadow-lg
-                transition-transform duration-300
-                hover:scale-105
-              "
-              loading="lazy"
-            />
-          </a>
-        </motion.div>
+  initial={{ opacity: 0, scale: 0.95 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: 0.3 }}
+  className="
+    w-full max-w-sm mx-auto
+    bg-white dark:bg-gray-900
+    border border-gray-200 dark:border-gray-700
+    rounded-2xl
+    p-6
+    shadow-md dark:shadow-xl
+  "
+>
+  <a
+    href="https://www.behance.net/adityajagdhane_7"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      src="https://www.adityajagdhane.in/behance_button.png"
+      alt="View my Behance gallery"
+      className="w-full h-auto rounded-lg"
+      loading="lazy"
+    />
+  </a>
+</motion.div>
 
       </div>
     </section>
