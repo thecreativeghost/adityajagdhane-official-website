@@ -3,7 +3,14 @@ import { motion } from 'framer-motion';
 
 const Music: React.FC = () => {
   return (
-    <section id="music" className="section bg-brand-gray">
+    <section
+      id="music"
+      className="
+        section
+        bg-gray-50 dark:bg-brand-gray
+        transition-colors duration-300
+      "
+    >
       <div className="container mx-auto px-6 text-center">
 
         {/* Heading */}
@@ -12,18 +19,18 @@ const Music: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold mb-8"
+          className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white"
         >
           My Music
         </motion.h2>
 
-        {/* Storytelling / Interactive Text */}
+        {/* Storytelling Text */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-gray-300 leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed mb-10"
         >
           Every melody starts as a thought, a memory, or a moment I couldn’t let go of.  
           Hit play and follow the journey, from my mind, straight to your ears.
@@ -35,7 +42,7 @@ const Music: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="w-full max-w-4xl mx-auto"
+          className="w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg"
         >
           <iframe
             style={{ borderRadius: '12px' }}
@@ -43,7 +50,6 @@ const Music: React.FC = () => {
             width="100%"
             height="352"
             frameBorder="0"
-            allowFullScreen={true}
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
             title="Spotify Player for Aditya Jagdhane"
