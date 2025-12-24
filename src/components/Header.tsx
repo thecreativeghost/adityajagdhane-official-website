@@ -3,6 +3,7 @@ import { Link } from 'react-scroll';
 import { useScroll } from '../hooks/useScroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MenuToggle } from './MenuToggle';
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { name: 'Home', to: 'home', type: 'scroll' },
