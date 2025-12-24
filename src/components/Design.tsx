@@ -27,7 +27,7 @@ const Design: React.FC = () => {
         >
           Design isn’t work for me… it’s a whole feeling. <br />
           Some people create things, but we designers give them that <em>extra sparkle</em>. <br />
-          One line, one color, one tiny adjustment — and the whole piece just comes alive. <br />
+          One line, one color, one tiny adjustment and the whole piece just comes alive. <br />
           If you wanna see how ideas turn into visuals… come along to my Behance.
         </motion.p>
 
