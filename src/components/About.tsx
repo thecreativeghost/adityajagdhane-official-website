@@ -185,9 +185,14 @@ const About: React.FC = () => {
 
     {/* NeuroSphere Publications */}
     <div>
-      <span className="font-bold text-xl text-gray-900 dark:text-white">
+      <a
+        href="https://neurospherepublications.blogspot.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
+      >
         NeuroSphere Publications
-      </span>
+      </a>
       <p className="text-gray-600 dark:text-gray-400">
         <em>(Book publishing company)</em>
       </p>
