@@ -2,7 +2,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { FaSpotify, FaYoutube, FaInstagram, FaLinkedin, FaApple, FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe } from 'react-icons/fa';
+import {
+  FaSpotify, FaYoutube, FaInstagram, FaLinkedin, FaApple,
+  FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe
+} from 'react-icons/fa';
 import { SiWikidata } from 'react-icons/si';
 import { BsMusicNote, BsDisc } from 'react-icons/bs';
 
@@ -30,7 +33,8 @@ const fadeOnly = {
 const About: React.FC = () => {
   const pageUrl = 'https://www.adityajagdhane.in/about/';
   const pageTitle = 'About — Aditya Jagdhane';
-  const pageDescription = 'About Aditya Jagdhane — biography, career, creative pursuits, and links to music and profiles.';
+  const pageDescription =
+    'About Aditya Jagdhane — biography, career, creative pursuits, and links to music and profiles.';
 
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -45,7 +49,8 @@ const About: React.FC = () => {
     "image": "https://www.adityajagdhane.in/aditya_jagdhane_in_2025_professional.jpg",
     "sameAs": socialLinks.map(l => l.href).filter(Boolean),
     "jobTitle": ["Musician", "Singer-Songwriter", "Composer", "Graphic Designer", "Programmer"],
-    "description": "Aditya Jagdhane is an Indian musician, singer-songwriter, composer, graphic designer, programmer, and philosopher with an interest in psychology."
+    "description":
+      "Aditya Jagdhane is an Indian musician, singer-songwriter, composer, graphic designer, programmer, and philosopher with an interest in psychology."
   };
 
   return (
@@ -58,17 +63,26 @@ const About: React.FC = () => {
         <meta property="og:title" content="About | Biography | Aditya Jagdhane" />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="profile" />
-        <script type="application/ld+json">{JSON.stringify(personJsonLd)}</script>
+        <script type="application/ld+json">
+          {JSON.stringify(personJsonLd)}
+        </script>
       </Helmet>
 
-      <section id="about" className="section">
+      <section
+        id="about"
+        className="
+          section
+          bg-gray-50 dark:bg-black
+          transition-colors duration-300
+        "
+      >
         <div className="container mx-auto px-6 text-center">
 
           {/* Heading */}
           <motion.h2
             {...fadeOnly}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-8"
+            className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white"
           >
             About Aditya
           </motion.h2>
@@ -77,17 +91,17 @@ const About: React.FC = () => {
           <motion.p
             {...fadeOnly}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-3xl mx-auto text-gray-300 leading-relaxed"
+            className="max-w-3xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed"
           >
             Aditya Jagdhane is an Indian musician, singer-songwriter, and composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression. His multidisciplinary approach allows him to express his artistic and philosophical vision across diverse platforms.
             <br />
-            <span className="text-gray-400 text-sm mt-2 block">
+            <span className="text-gray-500 dark:text-gray-400 text-sm mt-2 block">
               Source:{' '}
               <a
                 href="https://imdb.com/name/nm16380921/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline hover:text-white transition-colors"
+                className="underline hover:text-black dark:hover:text-white transition-colors"
               >
                 IMDb
               </a>
@@ -98,7 +112,7 @@ const About: React.FC = () => {
           <motion.h3
             {...fadeOnly}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-3xl font-bold mt-20 mb-8"
+            className="text-3xl font-bold mt-20 mb-8 text-gray-900 dark:text-white"
           >
             Connect With Me
           </motion.h3>
@@ -119,10 +133,22 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.7 + index * 0.05 }}
-                className="group relative flex items-center justify-center p-4 border border-gray-700 rounded-lg hover:bg-white hover:text-black transition-all duration-300"
+                className="
+                  group relative flex items-center justify-center p-4
+                  border border-gray-300 dark:border-gray-700
+                  rounded-lg
+                  hover:bg-black hover:text-white
+                  dark:hover:bg-white dark:hover:text-black
+                  transition-all duration-300
+                "
               >
                 <link.icon className="text-3xl" />
-                <span className="absolute bottom-full mb-2 w-auto p-2 text-xs text-white bg-black rounded-md scale-0 group-hover:scale-100 transition-transform origin-bottom">
+                <span className="
+                  absolute bottom-full mb-2 w-auto p-2 text-xs
+                  text-white bg-black dark:text-black dark:bg-white
+                  rounded-md scale-0 group-hover:scale-100
+                  transition-transform origin-bottom
+                ">
                   {link.label}
                 </span>
               </motion.a>
@@ -135,36 +161,41 @@ const About: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="text-center"
           >
-            <h3 className="text-3xl font-bold mb-8">Organizations</h3>
+            <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+              Organizations
+            </h3>
+
             <div className="space-y-6">
               <div>
                 <a
                   href="https://indiepulserecords.co.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-xl hover:text-white transition-colors"
+                  className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
                 >
                   IndiePulse Records
                 </a>
-                <p className="text-gray-400">
+                <p className="text-gray-600 dark:text-gray-400">
                   <em>(Music studio & indie record label)</em>
                 </p>
               </div>
+
               <div>
                 <a
                   href="https://aytida.co.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-xl hover:text-white transition-colors"
+                  className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
                 >
                   AYT!DA
                 </a>
-                <p className="text-gray-400">
+                <p className="text-gray-600 dark:text-gray-400">
                   <em>(Visual designing agency)</em>
                 </p>
               </div>
             </div>
-            <p className="text-sm text-gray-500 mt-8">
+
+            <p className="text-sm text-gray-500 dark:text-gray-500 mt-8">
               <em>Founded by Aditya Jagdhane</em>
             </p>
           </motion.div>
