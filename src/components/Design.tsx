@@ -3,7 +3,14 @@ import { motion } from 'framer-motion';
 
 const Design: React.FC = () => {
   return (
-    <section id="design" className="section bg-brand-gray">
+    <section
+      id="design"
+      className="
+        section
+        bg-gray-50 dark:bg-brand-gray
+        transition-colors duration-300
+      "
+    >
       <div className="container mx-auto px-6 text-center">
 
         {/* Heading */}
@@ -12,7 +19,7 @@ const Design: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold mb-8"
+          className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white"
         >
           Design
         </motion.h2>
@@ -23,15 +30,15 @@ const Design: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-gray-300 leading-relaxed mb-4"
+          className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed mb-4"
         >
           Design isn’t work for me… it’s a whole feeling. <br />
-          Some people create things, but we designers give them that <em>extra sparkle</em>. <br />
+          Some people create things, but we designers give them that <em className="text-gray-900 dark:text-white">extra sparkle</em>. <br />
           One line, one color, one tiny adjustment and the whole piece just comes alive. <br />
           If you wanna see how ideas turn into visuals… come along to my Behance.
         </motion.p>
 
-        {/* Behance Button (image) */}
+        {/* Behance Button */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -44,11 +51,16 @@ const Design: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View my Behance profile (opens in new tab)"
+            className="inline-block"
           >
             <img
               src="https://www.adityajagdhane.in/behance_button.png"
               alt="View my Behance gallery"
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="
+                w-full h-auto rounded-lg shadow-lg
+                transition-transform duration-300
+                hover:scale-105
+              "
               loading="lazy"
             />
           </a>
