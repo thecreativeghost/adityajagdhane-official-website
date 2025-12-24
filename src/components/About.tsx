@@ -1,4 +1,3 @@
-// src/components/About.tsx
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -6,7 +5,6 @@ import {
   FaSpotify, FaYoutube, FaInstagram, FaLinkedin, FaApple,
   FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe
 } from 'react-icons/fa';
-import { SiWikidata } from 'react-icons/si';
 import { BsMusicNote, BsDisc } from 'react-icons/bs';
 
 const socialLinks = [
@@ -47,7 +45,7 @@ const About: React.FC = () => {
       "@id": pageUrl
     },
     "image": "https://www.adityajagdhane.in/aditya_jagdhane_in_2025_professional.jpg",
-    "sameAs": socialLinks.map(l => l.href).filter(Boolean),
+    "sameAs": socialLinks.map(l => l.href),
     "jobTitle": ["Musician", "Singer-Songwriter", "Composer", "Graphic Designer", "Programmer"],
     "description":
       "Aditya Jagdhane is an Indian musician, singer-songwriter, composer, graphic designer, programmer, and philosopher with an interest in psychology."
@@ -70,11 +68,7 @@ const About: React.FC = () => {
 
       <section
         id="about"
-        className="
-          section
-          bg-gray-50 dark:bg-black
-          transition-colors duration-300
-        "
+        className="section bg-gray-50 dark:bg-black transition-colors duration-300"
       >
         <div className="container mx-auto px-6 text-center">
 
@@ -93,7 +87,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-3xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed"
           >
-            Aditya Jagdhane is an Indian musician, singer-songwriter, and composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression. His multidisciplinary approach allows him to express his artistic and philosophical vision across diverse platforms.
+            Aditya Jagdhane is an Indian musician, singer-songwriter, and composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression.
             <br />
             <span className="text-gray-500 dark:text-gray-400 text-sm mt-2 block">
               Source:{' '}
@@ -108,7 +102,7 @@ const About: React.FC = () => {
             </span>
           </motion.p>
 
-          {/* Subheading */}
+          {/* Connect */}
           <motion.h3
             {...fadeOnly}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -117,42 +111,40 @@ const About: React.FC = () => {
             Connect With Me
           </motion.h3>
 
-          {/* Icons Grid */}
+          {/* Icons Grid — FIXED */}
           <motion.div
             {...fadeOnly}
             transition={{ duration: 0.5, delay: 0.6 }}
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-4xl mx-auto mb-20"
           >
-            {socialLinks.map((link, index) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.7 + index * 0.05 }}
-                className="
-                  group relative flex items-center justify-center p-4
-                  border border-gray-300 dark:border-gray-700
-                  rounded-lg
-                  hover:bg-black hover:text-white
-                  dark:hover:bg-white dark:hover:text-black
-                  transition-all duration-300
-                "
-              >
-                <link.icon className="text-3xl" />
-                <span className="
-                  absolute bottom-full mb-2 w-auto p-2 text-xs
-                  text-white bg-black dark:text-black dark:bg-white
-                  rounded-md scale-0 group-hover:scale-100
-                  transition-transform origin-bottom
-                ">
-                  {link.label}
-                </span>
-              </motion.a>
-            ))}
+            {socialLinks.map((link, index) => {
+              const Icon = link.icon;
+              return (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.7 + index * 0.05 }}
+                  className="
+                    flex items-center justify-center
+                    w-20 h-16 rounded-xl
+                    bg-gray-100 dark:bg-gray-800
+                    border border-gray-200 dark:border-gray-700
+                    text-gray-700 dark:text-gray-300
+                    hover:bg-black hover:text-white
+                    dark:hover:bg-white dark:hover:text-black
+                    transition-all duration-300
+                  "
+                  aria-label={link.label}
+                >
+                  <Icon size={22} />
+                </motion.a>
+              );
+            })}
           </motion.div>
 
           {/* Organizations */}
