@@ -26,7 +26,7 @@ const Music: React.FC = () => {
           className="max-w-2xl mx-auto text-gray-300 leading-relaxed mb-10"
         >
           Every melody starts as a thought, a memory, or a moment I couldn’t let go of.  
-          Hit play and follow the journey — from my mind, straight to your ears.
+          Hit play and follow the journey, from my mind, straight to your ears.
         </motion.p>
 
         {/* Spotify Embed */}
