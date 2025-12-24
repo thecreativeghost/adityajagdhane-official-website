@@ -53,9 +53,9 @@ const About: React.FC = () => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <link rel="canonical" href={pageUrl} />
+        <link rel="canonical" href="https://www.adityajagdhane.in/about" />
         <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={pageTitle} />
+        <meta property="og:title" content="About | Biography | Aditya Jagdhane" />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="profile" />
         <script type="application/ld+json">{JSON.stringify(personJsonLd)}</script>
