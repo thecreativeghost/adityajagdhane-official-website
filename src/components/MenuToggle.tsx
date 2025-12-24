@@ -1,11 +1,11 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const Path = (props: any) => (
   <motion.path
     fill="transparent"
+    stroke="currentColor"
     strokeWidth="2"
-    stroke="hsl(0, 0%, 100%)"
     strokeLinecap="round"
     {...props}
   />
@@ -17,7 +17,11 @@ interface MenuToggleProps {
 }
 
 export const MenuToggle: React.FC<MenuToggleProps> = ({ toggle, isOpen }) => (
-  <button onClick={toggle} className="focus:outline-none bg-transparent border-none cursor-pointer">
+  <button
+    onClick={toggle}
+    aria-label="Toggle menu"
+    className="focus:outline-none bg-transparent border-none cursor-pointer text-black dark:text-white"
+  >
     <svg width="20" height="20" viewBox="0 0 20 20">
       <Path
         animate={isOpen ? "open" : "closed"}
