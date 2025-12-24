@@ -6,6 +6,7 @@ import {
   FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe
 } from 'react-icons/fa';
 import { BsMusicNote, BsDisc } from 'react-icons/bs';
+import TmdbIcon from '@/components/icons/TmdbIcon';
 
 const socialLinks = [
   { icon: FaSpotify, label: 'Spotify', href: 'https://open.spotify.com/artist/4h9hF2bDVS8HY1weu9IYg5' },
@@ -16,7 +17,7 @@ const socialLinks = [
   { icon: BsMusicNote, label: 'JioSaavn', href: 'https://www.jiosaavn.com/artist/aditya-jagdhane-songs/4Q,9LuO5,fs_' },
   { icon: FaImdb, label: 'IMDb', href: 'https://www.imdb.com/name/nm16380921/' },
   { icon: FaTwitter, label: 'X (Twitter)', href: 'https://x.com/AdityaJagdhane7' },
-  { icon: BsDisc, label: 'Discogs', href: 'https://www.discogs.com/artist/16796998-Aditya-Jagdhane' },
+  { icon: TmdbIcon, label: 'TMDB', href: 'https://www.themoviedb.org/person/5892274' },
   { icon: FaLink, label: 'Linktree', href: 'https://lnk.bio/adityajagdhane7' },
   { icon: FaMusic, label: 'MusicBrainz', href: 'https://musicbrainz.org/artist/2b41c60a-13c6-482d-945c-f704fb893e32' },
   { icon: FaGlobe, label: 'Knowledge Panel', href: 'https://www.google.com/search?kgmid=/g/11t5m84d_v' }
