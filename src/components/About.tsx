@@ -51,7 +51,10 @@ const About: React.FC = () => {
         <link rel="canonical" href={pageUrl} />
       </Helmet>
 
-      <section className="section bg-gray-50 dark:bg-black transition-colors duration-300">
+      <section
+        id="about"
+        className="section bg-gray-50 dark:bg-black transition-colors duration-300"
+      >
         <div className="container mx-auto px-6 text-center">
 
           {/* Heading */}
@@ -102,7 +105,7 @@ const About: React.FC = () => {
             Connect With Me
           </motion.h3>
 
-          {/* Social Icons — MOBILE FIXED */}
+          {/* Social Icons (mobile centered + slightly bigger) */}
           <motion.div
             {...fadeOnly}
             transition={{ delay: 0.6 }}
@@ -158,11 +161,11 @@ const About: React.FC = () => {
                   href="https://indiepulserecords.co.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-xl hover:underline"
+                  className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
                 >
                   IndiePulse Records
                 </a>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-[14px] text-gray-600 dark:text-gray-400">
                   <em>(Music studio & indie record label)</em>
                 </p>
               </div>
@@ -172,11 +175,11 @@ const About: React.FC = () => {
                   href="https://neurospherepublications.blogspot.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-xl hover:underline"
+                  className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
                 >
                   NeuroSphere Publications
                 </a>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-[14px] text-gray-600 dark:text-gray-400">
                   <em>(Book publishing company)</em>
                 </p>
               </div>
@@ -186,17 +189,17 @@ const About: React.FC = () => {
                   href="https://aytida.co.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-xl hover:underline"
+                  className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
                 >
                   AYT!DA
                 </a>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-[14px] text-gray-600 dark:text-gray-400">
                   <em>(Visual designing agency)</em>
                 </p>
               </div>
             </div>
 
-            <p className="mt-8 text-sm text-gray-500">
+            <p className="mt-8 text-sm text-gray-500 dark:text-gray-500">
               <em>Founded by Aditya Jagdhane</em>
             </p>
           </motion.div>
