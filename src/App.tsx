@@ -7,7 +7,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-/** existing helpers (no change) */
+/** helpers (unchanged) */
 function findScrollContainer(el: HTMLElement | null): HTMLElement | Element | null {
   if (!el) return document.scrollingElement || document.documentElement;
   let node: any = el;
@@ -44,7 +44,6 @@ function waitForElementAndScroll(id: string, maxAttempts = 30, interval = 120) {
       attempts++;
       const el = document.getElementById(id);
       if (el) {
-        console.log(`[scroll] found '${id}' after ${attempts} attempt(s)`);
         const container = findScrollContainer(el);
         if (container && container !== document.documentElement && container !== document.body) {
           const top = (el as HTMLElement).offsetTop;
@@ -54,17 +53,14 @@ function waitForElementAndScroll(id: string, maxAttempts = 30, interval = 120) {
         }
         return resolve();
       }
-      if (attempts >= maxAttempts) {
-        console.warn(`[scroll] gave up waiting for '${id}'`);
-        return resolve();
-      }
+      if (attempts >= maxAttempts) return resolve();
       setTimeout(tryIt, interval);
     };
     tryIt();
   });
 }
 
-/** new: mapping for titles */
+/** titles per section */
 const sectionTitles: Record<string, string> = {
   '': 'Aditya Jagdhane',
   home: 'Aditya Jagdhane | Indian musician, singer-songwriter, composer and philosopher',
@@ -74,13 +70,25 @@ const sectionTitles: Record<string, string> = {
   contact: 'Contact | Get in Touch | Aditya Jagdhane',
 };
 
+/** 🔥 canonical updater (NO Helmet) */
+function updateCanonical(section: string) {
+  const link = document.querySelector<HTMLLinkElement>("link[rel='canonical']");
+  if (!link) return;
+
+  const clean =
+    section === '' || section === 'home'
+      ? ''
+      : '/' + section.replace(/^\/+/, '');
+
+  link.href = `https://www.adityajagdhane.in${clean}`;
+}
+
 export default function App() {
   useEffect(() => {
     const doInitial = async () => {
       const target = normalizeTargetFromLocation();
-      console.log('[App] initial target =', target || '(home)');
-      // set title for initial target
       document.title = sectionTitles[target] ?? 'Aditya Jagdhane';
+      updateCanonical(target);
 
       if (!target) {
         setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 200);
@@ -93,36 +101,34 @@ export default function App() {
 
     const onPop = async () => {
       const t = normalizeTargetFromLocation();
-      console.log('[App] popstate ->', t || '(home)');
       document.title = sectionTitles[t] ?? 'Aditya Jagdhane';
+      updateCanonical(t);
       if (!t) window.scrollTo({ top: 0, behavior: 'smooth' });
       else await waitForElementAndScroll(t);
     };
 
     window.addEventListener('popstate', onPop);
 
-    // also update title when user scrolls and different section becomes visible
+    /** update title + canonical on scroll */
     const observer = new IntersectionObserver(
       (entries) => {
-        // choose the first entry that's intersecting and with sufficient visibility
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+
         if (visible && visible.target && visible.target.id) {
           const id = visible.target.id.toLowerCase();
           if (sectionTitles[id]) {
             document.title = sectionTitles[id];
+            updateCanonical(id);
           }
         }
       },
       {
-        root: null,
-        rootMargin: '0px',
-        threshold: [0.35, 0.6, 0.9], // tune as needed
+        threshold: [0.35, 0.6, 0.9],
       }
     );
 
-    // observe sections by ids if they exist
     ['home', 'music', 'design', 'about', 'contact'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -138,7 +144,6 @@ export default function App() {
     <div className="font-sora">
       <Header />
       <main>
-        {/* Ensure each section component renders an element with the matching id */}
         <Home />
         <Music />
         <Design />
