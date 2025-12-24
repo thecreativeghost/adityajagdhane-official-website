@@ -94,6 +94,17 @@ const Contact: React.FC = () => {
         </motion.div>
       </div>
     </section>
+    <Helmet>
+  <title>Contact Aditya Jagdhane</title>
+  <meta
+    name="description"
+    content="Contact Aditya Jagdhane for music, design, collaborations, and professional inquiries."
+  />
+  <link
+    rel="canonical"
+    href="https://www.adityajagdhane.in/contact"
+  />
+</Helmet>
   );
 };
 
