@@ -5,9 +5,16 @@ const Home: React.FC = () => {
   return (
     <section
       id="home"
-      className="section relative overflow-hidden flex flex-col items-center justify-center text-center px-4 md:block"
+      className="
+        section relative overflow-hidden
+        flex flex-col items-center justify-center
+        text-center px-4 md:block
+        bg-gray-50 dark:bg-black
+        transition-colors duration-300
+      "
     >
       <div className="container mx-auto px-6 grid md:grid-cols-2 items-center gap-10">
+        {/* LEFT TEXT */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -18,7 +25,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-lg md:text-xl text-gray-400"
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400"
           >
             This is
           </motion.p>
@@ -27,7 +34,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="text-5xl md:text-7xl font-bold my-2 text-white"
+            className="text-5xl md:text-7xl font-bold my-2 text-gray-900 dark:text-white"
           >
             Aditya Jagdhane
           </motion.h1>
@@ -36,12 +43,13 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="text-md md:text-lg text-gray-300"
+            className="text-md md:text-lg text-gray-700 dark:text-gray-300"
           >
             Musician · Designer · Programmer
           </motion.p>
         </motion.div>
 
+        {/* RIGHT IMAGE */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -55,14 +63,22 @@ const Home: React.FC = () => {
               className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative"
             />
 
+            {/* IMAGE FADE OVERLAY */}
             <div
-              className="absolute inset-0 bg-black"
+              className="absolute inset-0 bg-gray-50 dark:bg-black"
               style={{
                 maskImage: 'linear-gradient(to top, black 0%, transparent 50%)',
               }}
             ></div>
 
-            <div className="absolute -inset-2 bg-white/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* GLOW */}
+            <div className="
+              absolute -inset-2
+              bg-black/10 dark:bg-white/10
+              rounded-full blur-3xl
+              opacity-0 group-hover:opacity-100
+              transition-opacity duration-500
+            "></div>
           </div>
         </motion.div>
       </div>
