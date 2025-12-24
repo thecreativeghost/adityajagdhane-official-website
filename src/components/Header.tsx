@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import { useScroll } from '../hooks/useScroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MenuToggle } from './MenuToggle';
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { name: 'Home', to: 'home', type: 'scroll' },
@@ -20,28 +20,27 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
-  // update browser URL without reloading (keeps SPA behavior)
+  // update browser URL without reload (SPA-safe)
   const updateUrlForTarget = (target: string) => {
     try {
-      // translate 'home' -> '/'
       const path = !target || target === 'home' ? '/' : `/${encodeURIComponent(target)}`;
       if (window.location.pathname !== path) {
         window.history.pushState({}, '', path);
       }
     } catch (err) {
-      // ignore pushState errors (rare)
       console.warn('pushState failed', err);
     }
   };
 
   return (
     <>
+      {/* HEADER */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || isMenuOpen ? 'bg-black/80 shadow-lg' : 'bg-transparent'
+          scrolled || isMenuOpen ? 'bg-black/80 backdrop-blur shadow-lg' : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -49,10 +48,7 @@ const Header: React.FC = () => {
           <a
             href="/"
             className="cursor-pointer z-50"
-            onClick={(e) => {
-              // keep default behavior for open-in-new-tab; for normal click, update url and scroll top
-              updateUrlForTarget('home');
-            }}
+            onClick={() => updateUrlForTarget('home')}
             aria-label="Go to home"
           >
             <img
@@ -62,53 +58,42 @@ const Header: React.FC = () => {
             />
           </a>
 
-          {/* DESKTOP NAVIGATION */}
-          <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
-            {navLinks.map((link) => {
-              if (link.type === 'scroll') {
-                return (
-                  <Link
-                    key={link.name}
-                    to={link.to}
-                    smooth={true}
-                    duration={500}
-                    offset={-80} // FINAL CORRECT OFFSET
-                    spy={true}
-                    activeClass="text-white"
-                    className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer relative group"
-                    // when clicked, update URL to /about, /music etc (but keep scroll behavior)
-                    onClick={() => updateUrlForTarget(link.to)}
-                    role="link"
-                    tabIndex={0}
-                  >
-                    {link.name}
-                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
-                  </Link>
-                );
-              }
+          {/* DESKTOP NAV */}
+          <nav
+            className="hidden md:flex items-center space-x-8 text-gray-400"
+            aria-label="Main navigation"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.to}
+                smooth
+                duration={500}
+                offset={-80}
+                spy
+                activeClass="text-white"
+                className="hover:text-white transition-colors duration-300 cursor-pointer relative group"
+                onClick={() => updateUrlForTarget(link.to)}
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
+              </Link>
+            ))}
 
-              return (
-                <a
-                  key={link.name}
-                  href={link.to}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer relative group"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
-                </a>
-              );
-            })}
+            {/* 🌙 THEME TOGGLE (DESKTOP) */}
+            <div className="ml-4">
+              <ThemeToggle />
+            </div>
           </nav>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE BUTTONS */}
           <motion.div
-            className="md:hidden z-50"
+            className="md:hidden z-50 flex items-center gap-4"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
           >
+            <ThemeToggle />
             <MenuToggle toggle={toggleMenu} isOpen={isMenuOpen} />
           </motion.div>
         </div>
@@ -123,43 +108,29 @@ const Header: React.FC = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="fixed inset-0 bg-black/90 z-40 flex flex-col items-center justify-center md:hidden"
-            aria-hidden={!isMenuOpen}
           >
-            <nav className="flex flex-col items-center justify-center space-y-8 text-center" aria-label="Mobile navigation">
-              {navLinks.map((link) => {
-                if (link.type === 'scroll') {
-                  return (
-                    <Link
-                      key={link.name}
-                      to={link.to}
-                      smooth={true}
-                      duration={500}
-                      offset={-80} // MOBILE OFFSET ALSO FIXED
-                      onClick={() => {
-                        // close menu + update url
-                        closeMenu();
-                        updateUrlForTarget(link.to);
-                      }}
-                      className="text-3xl text-gray-300 hover:text-white transition-colors cursor-pointer"
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                }
+            {/* THEME TOGGLE (MOBILE OVERLAY) */}
+            <div className="absolute top-6 right-6">
+              <ThemeToggle />
+            </div>
 
-                return (
-                  <a
-                    key={link.name}
-                    href={link.to}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={closeMenu}
-                    className="text-3xl text-gray-300 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                );
-              })}
+            <nav className="flex flex-col items-center justify-center space-y-8 text-center">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.to}
+                  smooth
+                  duration={500}
+                  offset={-80}
+                  onClick={() => {
+                    closeMenu();
+                    updateUrlForTarget(link.to);
+                  }}
+                  className="text-3xl text-gray-300 hover:text-white transition-colors cursor-pointer"
+                >
+                  {link.name}
+                </Link>
+              ))}
             </nav>
           </motion.div>
         )}
