@@ -2,10 +2,18 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import {
-  FaSpotify, FaYoutube, FaInstagram, FaLinkedin, FaApple,
-  FaImdb, FaTwitter, FaLink, FaMusic, FaGlobe
+  FaSpotify,
+  FaYoutube,
+  FaInstagram,
+  FaLinkedin,
+  FaApple,
+  FaImdb,
+  FaTwitter,
+  FaLink,
+  FaMusic,
+  FaGlobe,
 } from 'react-icons/fa';
-import { BsMusicNote, BsDisc } from 'react-icons/bs';
+import { BsMusicNote } from 'react-icons/bs';
 import { FaClapperboard } from 'react-icons/fa6';
 
 const socialLinks = [
@@ -16,132 +24,114 @@ const socialLinks = [
   { icon: FaApple, label: 'Apple Music', href: 'https://music.apple.com/ca/artist/aditya-jagdhane/1631817096' },
   { icon: BsMusicNote, label: 'JioSaavn', href: 'https://www.jiosaavn.com/artist/aditya-jagdhane-songs/4Q,9LuO5,fs_' },
   { icon: FaImdb, label: 'IMDb', href: 'https://www.imdb.com/name/nm16380921/' },
-  { icon: FaTwitter, label: 'X (Twitter)', href: 'https://x.com/AdityaJagdhane7' },
-  { icon: FaClapperboard, label: 'TMDB', href: 'https://www.themoviedb.org/person/5892274' },
+  { icon: FaClapperboard, label: 'TMDb', href: 'https://www.themoviedb.org/person/5892274' },
+  { icon: FaTwitter, label: 'X', href: 'https://x.com/AdityaJagdhane7' },
   { icon: FaLink, label: 'Linktree', href: 'https://lnk.bio/adityajagdhane7' },
   { icon: FaMusic, label: 'MusicBrainz', href: 'https://musicbrainz.org/artist/2b41c60a-13c6-482d-945c-f704fb893e32' },
-  { icon: FaGlobe, label: 'Knowledge Panel', href: 'https://www.google.com/search?kgmid=/g/11t5m84d_v' }
+  { icon: FaGlobe, label: 'Knowledge Panel', href: 'https://www.google.com/search?kgmid=/g/11t5m84d_v' },
 ];
 
 const fadeOnly = {
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
-  viewport: { once: true }
+  viewport: { once: true },
 };
 
 const About: React.FC = () => {
   const pageUrl = 'https://www.adityajagdhane.in/about/';
   const pageTitle = 'About — Aditya Jagdhane';
   const pageDescription =
-    'About Aditya Jagdhane — biography, career, creative pursuits, and links to music and profiles.';
-
-  const personJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://www.adityajagdhane.in/#person",
-    "name": "Aditya Jagdhane",
-    "url": "https://www.adityajagdhane.in",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": pageUrl
-    },
-    "image": "https://www.adityajagdhane.in/aditya_jagdhane_in_2025_professional.jpg",
-    "sameAs": socialLinks.map(l => l.href),
-    "jobTitle": ["Musician", "Singer-Songwriter", "Composer", "Graphic Designer", "Programmer"],
-    "description":
-      "Aditya Jagdhane is an Indian musician, singer-songwriter, composer, graphic designer, programmer, and philosopher with an interest in psychology."
-  };
+    'About Aditya Jagdhane — biography, career, creative pursuits, and official links.';
 
   return (
     <>
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <link rel="canonical" href="https://www.adityajagdhane.in/about" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content="About | Biography | Aditya Jagdhane" />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:type" content="profile" />
-        <script type="application/ld+json">
-          {JSON.stringify(personJsonLd)}
-        </script>
+        <link rel="canonical" href={pageUrl} />
       </Helmet>
 
-      <section
-        id="about"
-        className="section bg-gray-50 dark:bg-black transition-colors duration-300"
-      >
+      <section className="section bg-gray-50 dark:bg-black transition-colors duration-300">
         <div className="container mx-auto px-6 text-center">
 
           {/* Heading */}
           <motion.h2
             {...fadeOnly}
-            transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 dark:text-white"
           >
             About Aditya
           </motion.h2>
 
-          {/* Description */}
+          {/* Bio */}
           <motion.p
             {...fadeOnly}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
             className="max-w-3xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed"
           >
-            Aditya Jagdhane is an Indian musician, singer-songwriter, and composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a graphic designer and programmer, and a philosopher deeply interested in psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression.
-            <br />
-            <span className="text-gray-500 dark:text-gray-400 text-sm mt-2 block">
-  Source:{' '}
-  <a
-    href="https://imdb.com/name/nm16380921/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="underline hover:text-black dark:hover:text-white transition-colors"
-  >
-    IMDb
-  </a>
-  {' '}|{' '}
-  <a
-    href="https://www.themoviedb.org/person/5892274"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="underline hover:text-black dark:hover:text-white transition-colors"
-  >
-    TMDb
-  </a>
-</span>
+            Aditya Jagdhane is an Indian musician, singer-songwriter, and composer.
+            He is also a graphic designer, programmer, and a philosopher deeply
+            interested in psychology and human behavior.
+            <span className="block mt-3 text-sm text-gray-500 dark:text-gray-400">
+              Source:{' '}
+              <a
+                href="https://imdb.com/name/nm16380921/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-black dark:hover:text-white"
+              >
+                IMDb
+              </a>{' '}
+              |{' '}
+              <a
+                href="https://www.themoviedb.org/person/5892274"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-black dark:hover:text-white"
+              >
+                TMDb
+              </a>
+            </span>
           </motion.p>
 
           {/* Connect */}
           <motion.h3
             {...fadeOnly}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-3xl font-bold mt-20 mb-8 text-gray-900 dark:text-white"
+            transition={{ delay: 0.4 }}
+            className="text-3xl font-bold mt-20 mb-10 text-gray-900 dark:text-white"
           >
             Connect With Me
           </motion.h3>
 
-          {/* Icons Grid — FIXED */}
+          {/* Social Icons — MOBILE FIXED */}
           <motion.div
             {...fadeOnly}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-4xl mx-auto mb-20"
+            transition={{ delay: 0.6 }}
+            className="
+              grid
+              grid-cols-2
+              sm:grid-cols-3
+              md:grid-cols-4
+              lg:grid-cols-6
+              gap-5
+              max-w-4xl
+              mx-auto
+              justify-items-center
+              mb-24
+            "
           >
-            {socialLinks.map((link, index) => {
+            {socialLinks.map((link) => {
               const Icon = link.icon;
               return (
-                <motion.a
+                <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.7 + index * 0.05 }}
+                  aria-label={link.label}
                   className="
                     flex items-center justify-center
-                    w-20 h-16 rounded-xl
+                    w-20 h-20
+                    rounded-xl
                     bg-gray-100 dark:bg-gray-800
                     border border-gray-200 dark:border-gray-700
                     text-gray-700 dark:text-gray-300
@@ -149,75 +139,67 @@ const About: React.FC = () => {
                     dark:hover:bg-white dark:hover:text-black
                     transition-all duration-300
                   "
-                  aria-label={link.label}
                 >
-                  <Icon size={22} />
-                </motion.a>
+                  <Icon size={26} />
+                </a>
               );
             })}
           </motion.div>
 
-         {/* Organizations */}
-<motion.div
-  {...fadeOnly}
-  transition={{ duration: 0.5, delay: 0.8 }}
-  className="text-center"
->
-  <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-    Organizations
-  </h3>
+          {/* Organizations */}
+          <motion.div {...fadeOnly} transition={{ delay: 0.8 }}>
+            <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+              Organizations
+            </h3>
 
-  <div className="space-y-6">
-    {/* IndiePulse Records */}
-    <div>
-      <a
-        href="https://indiepulserecords.co.in"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
-      >
-        IndiePulse Records
-      </a>
-      <p className="text-gray-600 dark:text-gray-400">
-        <em>(Music studio & indie record label)</em>
-      </p>
-    </div>
+            <div className="space-y-6">
+              <div>
+                <a
+                  href="https://indiepulserecords.co.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-xl hover:underline"
+                >
+                  IndiePulse Records
+                </a>
+                <p className="text-gray-600 dark:text-gray-400">
+                  <em>(Music studio & indie record label)</em>
+                </p>
+              </div>
 
-    {/* NeuroSphere Publications */}
-    <div>
-      <a
-        href="https://neurospherepublications.blogspot.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
-      >
-        NeuroSphere Publications
-      </a>
-      <p className="text-gray-600 dark:text-gray-400">
-        <em>(Book publishing company)</em>
-      </p>
-    </div>
+              <div>
+                <a
+                  href="https://neurospherepublications.blogspot.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-xl hover:underline"
+                >
+                  NeuroSphere Publications
+                </a>
+                <p className="text-gray-600 dark:text-gray-400">
+                  <em>(Book publishing company)</em>
+                </p>
+              </div>
 
-    {/* AYT!DA */}
-    <div>
-      <a
-        href="https://aytida.co.in"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-bold text-xl text-gray-900 dark:text-white hover:underline"
-      >
-        AYT!DA
-      </a>
-      <p className="text-gray-600 dark:text-gray-400">
-        <em>(Visual designing agency)</em>
-      </p>
-    </div>
-  </div>
+              <div>
+                <a
+                  href="https://aytida.co.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-xl hover:underline"
+                >
+                  AYT!DA
+                </a>
+                <p className="text-gray-600 dark:text-gray-400">
+                  <em>(Visual designing agency)</em>
+                </p>
+              </div>
+            </div>
 
-  <p className="text-sm text-gray-500 dark:text-gray-500 mt-8">
-    <em>Founded by Aditya Jagdhane</em>
-  </p>
-</motion.div>
+            <p className="mt-8 text-sm text-gray-500">
+              <em>Founded by Aditya Jagdhane</em>
+            </p>
+          </motion.div>
         </div>
       </section>
     </>
