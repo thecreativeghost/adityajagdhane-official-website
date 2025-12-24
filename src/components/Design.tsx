@@ -3,19 +3,6 @@ import { motion } from 'framer-motion';
 
 const Design: React.FC = () => {
   return (
-    <>
-      <Helmet>
-      <title>Design | Artwork | Aditya Jagdhane</title>
-      <meta
-        name="description"
-        content="Design portfolio of Aditya Jagdhane — logos, branding, visual identity, and creative direction."
-      />
-      <link
-        rel="canonical"
-        href="https://www.adityajagdhane.in/design"
-      />
-    </Helmet>
-
     <section id="design" className="section bg-brand-gray">
       <div className="container mx-auto px-6 text-center">
 
