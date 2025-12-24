@@ -1,43 +1,64 @@
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "light") {
-      document.documentElement.classList.remove("dark");
+    setMounted(true);
+
+    const root = document.documentElement;
+    const saved = localStorage.getItem("theme");
+
+    if (saved === "light") {
+      root.classList.remove("dark");
       setIsDark(false);
     } else {
-      document.documentElement.classList.add("dark");
+      root.classList.add("dark");
       setIsDark(true);
     }
   }, []);
 
+  if (!mounted) return null;
+
   const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
+    const root = document.documentElement;
+
+    if (root.classList.contains("dark")) {
+      root.classList.remove("dark");
       localStorage.setItem("theme", "light");
+      setIsDark(false);
     } else {
-      document.documentElement.classList.add("dark");
+      root.classList.add("dark");
       localStorage.setItem("theme", "dark");
+      setIsDark(true);
     }
-    setIsDark(!isDark);
   };
 
   return (
     <button
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="relative flex items-center w-14 h-8 rounded-full bg-gray-300 dark:bg-gray-700 transition-colors"
+      className="
+        relative w-11 h-6 rounded-full
+        bg-gray-300 dark:bg-gray-700
+        transition-colors duration-300
+        focus:outline-none
+      "
     >
       <span
-        className={`absolute left-1 top-1 w-6 h-6 rounded-full bg-white dark:bg-black transition-transform ${
-          isDark ? "translate-x-6" : "translate-x-0"
-        }`}
+        className={`
+          absolute top-0.5 left-0.5 w-5 h-5 rounded-full
+          bg-white dark:bg-black
+          shadow-md
+          transform transition-transform duration-300
+          ${isDark ? "translate-x-5" : "translate-x-0"}
+        `}
       />
-      <span className="absolute left-1 text-xs">☀️</span>
-      <span className="absolute right-1 text-xs">🌙</span>
+
+      {/* icons */}
+      <span className="absolute left-1 top-1 text-[10px]">☀️</span>
+      <span className="absolute right-1 top-1 text-[10px]">🌙</span>
     </button>
   );
 }
