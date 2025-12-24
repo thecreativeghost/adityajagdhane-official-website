@@ -30,42 +30,44 @@ const Design: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed mb-4"
+          className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed mb-6"
         >
           Design isn’t work for me… it’s a whole feeling. <br />
-          Some people create things, but we designers give them that <em className="text-gray-900 dark:text-white">extra sparkle</em>. <br />
+          Some people create things, but we designers give them that{' '}
+          <em className="text-gray-900 dark:text-white">extra sparkle</em>. <br />
           One line, one color, one tiny adjustment and the whole piece just comes alive. <br />
           If you wanna see how ideas turn into visuals… come along to my Behance.
         </motion.p>
 
-        {/* Behance Button */}
+        {/* Behance Card — OPTION 1 (NO BORDER, ONLY SHADOW) */}
         <motion.div
-  initial={{ opacity: 0, scale: 0.95 }}
-  whileInView={{ opacity: 1, scale: 1 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6, delay: 0.3 }}
-  className="
-    w-full max-w-sm mx-auto
-    bg-white dark:bg-gray-900
-    border border-gray-200 dark:border-gray-700
-    rounded-2xl
-    p-6
-    shadow-md dark:shadow-xl
-  "
->
-  <a
-    href="https://www.behance.net/adityajagdhane_7"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img
-      src="https://www.adityajagdhane.in/behance_button.png"
-      alt="View my Behance gallery"
-      className="w-full h-auto rounded-lg"
-      loading="lazy"
-    />
-  </a>
-</motion.div>
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="
+            w-full max-w-sm mx-auto
+            bg-white dark:bg-gray-900
+            rounded-2xl
+            p-6
+            shadow-lg dark:shadow-2xl
+          "
+        >
+          <a
+            href="https://www.behance.net/adityajagdhane_7"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View my Behance profile"
+            className="block"
+          >
+            <img
+              src="https://www.adityajagdhane.in/behance_button.png"
+              alt="View my Behance gallery"
+              className="w-full h-auto rounded-lg"
+              loading="lazy"
+            />
+          </a>
+        </motion.div>
 
       </div>
     </section>
