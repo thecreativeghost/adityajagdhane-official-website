@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-black text-gray-300 font-sora antialiased;
+  @apply bg-white text-gray-900 dark:bg-black dark:text-gray-300 font-sora antialiased transition-colors duration-300;
 }
 
 /* GLOBAL SECTION FIX */
