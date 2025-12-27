@@ -11,13 +11,13 @@ const images = [
 ];
 
 const durations = [
-  2000, // 1.png
-  1000, // 2.png
-  1000, // 3.png
-  1000, // 4.png
-  1000, // 5.png
-  1000, // 6.png
-  2000, // 7.png
+  3000, // 1.png
+  1500, // 2.png
+  1500, // 3.png
+  1500, // 4.png
+  1500, // 5.png
+  1500, // 6.png
+  3000, // 7.png
 ];
 
 const PngSequence: React.FC = () => {
