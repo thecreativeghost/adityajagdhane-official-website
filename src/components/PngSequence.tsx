@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const images = [
   "/images/profile/sequence/1.webp",
@@ -10,43 +10,52 @@ const images = [
   "/images/profile/sequence/7.webp",
 ];
 
-const durations = [
-  2000, // 1.webp
-  1000, // 2.webp
-  1000, // 3.webp
-  1000, // 4.webp
-  1000, // 5.webp
-  1000, // 6.webp
-  2000, // 7.webp
-];
+// duration per frame (ms)
+const durations = [2000, 1000, 1000, 1000, 1000, 1000, 2000];
 
-const PngSequence: React.FC = () => {
-  const [index, setIndex] = useState(0);
+const PngSequence = () => {
+  const imgRef = useRef<HTMLImageElement | null>(null);
+  const indexRef = useRef(0);
+  const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    let timer = setTimeout(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, durations[index]);
+    // preload images once
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
 
-    return () => clearTimeout(timer);
-  }, [index]);
+    const play = () => {
+      if (!imgRef.current) return;
+
+      imgRef.current.src = images[indexRef.current];
+
+      timerRef.current = window.setTimeout(() => {
+        indexRef.current = (indexRef.current + 1) % images.length;
+        play();
+      }, durations[indexRef.current]);
+    };
+
+    play();
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   return (
     <img
-      key={index} // 🔥 VERY IMPORTANT
-      src={images[index]}
-      alt="Profile animation frame"
+      ref={imgRef}
+      src={images[0]}
+      alt="Profile animation sequence"
       className="
         w-full
         max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg
         h-auto
         select-none
         pointer-events-none
-        transition-opacity
-        duration-300
-        ease-in-out
+        will-change-[opacity]
       "
-      loading="eager"
       draggable={false}
     />
   );
