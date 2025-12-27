@@ -11,7 +11,7 @@ const images = [
 ];
 
 // duration per frame (ms)
-const durations = [2000, 1000, 1000, 1000, 1000, 1000, 2000];
+const durations = [2000, 700, 700, 700, 700, 700, 2000];
 
 const PngSequence = () => {
   const imgRef = useRef<HTMLImageElement | null>(null);
