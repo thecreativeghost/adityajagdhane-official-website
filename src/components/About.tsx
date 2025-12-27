@@ -71,9 +71,7 @@ const About: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="max-w-3xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed"
           >
-            Aditya Jagdhane is an Indian musician, singer-songwriter, and composer.
-            He is also a graphic designer, programmer, and a philosopher deeply
-            interested in psychology and human behavior.
+            Aditya Jagdhane is an Indian Musician, Singer-Songwriter, and Composer. His unique style blends heartfelt lyrics with soulful melodies. Aditya is also a Graphic Designer and Programmer, and a Philosopher deeply interested in Psychology. He often reflects human behavior, emotions, and introspective thoughts through his artistic expression. His multidisciplinary approach allows him to express his artistic and philosophical vision across diverse platforms. 
             <span className="block mt-3 text-sm text-gray-500 dark:text-gray-400">
               Source:{' '}
               <a
