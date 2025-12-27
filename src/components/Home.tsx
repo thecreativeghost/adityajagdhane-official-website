@@ -49,7 +49,7 @@ const Home: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        {/* RIGHT IMAGE */}
+        {/* RIGHT VIDEO */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -57,28 +57,34 @@ const Home: React.FC = () => {
           className="relative flex justify-center items-center mt-10 md:mt-0"
         >
           <div className="relative group">
-            <img
-              src="https://www.adityajagdhane.in/images/profile/profile-image.png"
-              alt="Aditya Jagdhane creative professional portrait featuring abstract brush stroke design"
-              className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative"
+            <video
+              src="https://www.adityajagdhane.in/images/profile/profile-video.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto z-10 relative rounded-lg"
             />
 
-            {/* IMAGE FADE OVERLAY */}
+            {/* VIDEO FADE OVERLAY */}
             <div
-              className="absolute inset-0 bg-gray-50 dark:bg-black"
+              className="absolute inset-0 bg-gray-50 dark:bg-black pointer-events-none"
               style={{
                 maskImage: 'linear-gradient(to top, black 0%, transparent 50%)',
               }}
             ></div>
 
             {/* GLOW */}
-            <div className="
-              absolute -inset-2
-              bg-black/10 dark:bg-white/10
-              rounded-full blur-3xl
-              opacity-0 group-hover:opacity-100
-              transition-opacity duration-500
-            "></div>
+            <div
+              className="
+                absolute -inset-2
+                bg-black/10 dark:bg-white/10
+                rounded-full blur-3xl
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-500
+              "
+            ></div>
           </div>
         </motion.div>
       </div>
