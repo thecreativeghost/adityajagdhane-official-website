@@ -48,7 +48,7 @@ const Header: React.FC = () => {
             onClick={() => updateUrlForTarget('home')}
           >
             <img
-              src="https://i.postimg.cc/yd0j68Tg/logo-for-web.png"
+              src="/images/profile/aytida-logo.webp"
               alt="AYT!DA Logo"
               className="h-8 w-auto"
             />
