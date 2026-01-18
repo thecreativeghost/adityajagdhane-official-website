@@ -14,6 +14,7 @@ import {
   FaGlobe,
 } from 'react-icons/fa';
 import { BsMusicNote } from 'react-icons/bs';
+import { FaPinterest } from 'react-icons/fa';
 import { FaClapperboard } from 'react-icons/fa6';
 
 const socialLinks = [
