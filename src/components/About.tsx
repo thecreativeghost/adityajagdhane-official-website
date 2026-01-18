@@ -28,7 +28,7 @@ const socialLinks = [
   { icon: FaTwitter, label: 'X', href: 'https://x.com/AdityaJagdhane7' },
   { icon: FaLink, label: 'Linktree', href: 'https://lnk.bio/adityajagdhane7' },
   { icon: FaMusic, label: 'MusicBrainz', href: 'https://musicbrainz.org/artist/2b41c60a-13c6-482d-945c-f704fb893e32' },
-  { icon: FaGlobe, label: 'Knowledge Panel', href: 'https://www.google.com/search?kgmid=/g/11t5m84d_v' },
+  { icon: FaPinterest, label: 'Pinterest', href: 'https://in.pinterest.com/adityajagdhaneofficial/' },
 ];
 
 const fadeOnly = {
